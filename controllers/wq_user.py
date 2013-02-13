@@ -8,14 +8,21 @@ jinja_environment = jinja2.Environment(loader=jinja2.FileSystemLoader(base_paths
 
 class HomePageHandler(webapp2.RequestHandler):
     def get(self):
-        if users.get_current_user():
+        user = users.get_current_user()
+        if user:
             url = users.create_logout_url(self.request.uri)
             url_linktext = 'Logout'
+            user_name = user.email()
         else:
             url = users.create_login_url(self.request.uri)
             url_linktext = 'Login'
+            user_name = ""
 
-        template_values = {'url': url, 'url_linktext': url_linktext}
+        template_values = {
+            'url': url,
+            'url_linktext': url_linktext,
+            'user_name': user_name,
+        }
 
         template = jinja_environment.get_template('templates/index.html')
         self.response.out.write(template.render(template_values))
