@@ -15,11 +15,12 @@
 # limitations under the License.
 #
 import webapp2
+import controllers.wq_user
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
         self.response.write('Hello world!')
 
 app = webapp2.WSGIApplication([
-    ('/', MainHandler)
+    ('/', controllers.wq_user.MyHandler)
 ], debug=True)
