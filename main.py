@@ -18,5 +18,5 @@ import webapp2
 import controllers.wq_user
 
 app = webapp2.WSGIApplication([
-    ('/', controllers.wq_user.login_handler)
+    ('/', controllers.wq_user.LoginHandler)
 ], debug=True)

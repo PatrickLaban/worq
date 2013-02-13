@@ -1,7 +1,7 @@
 import webapp2
 from google.appengine.api import users
 
-class login_handler(webapp2.RequestHandler):
+class LoginHandler(webapp2.RequestHandler):
     def get(self):
         user = users.get_current_user()
         if user:
