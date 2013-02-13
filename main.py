@@ -17,10 +17,6 @@
 import webapp2
 import controllers.wq_user
 
-class MainHandler(webapp2.RequestHandler):
-    def get(self):
-        self.response.write('Hello world!')
-
 app = webapp2.WSGIApplication([
-    ('/', controllers.wq_user.MyHandler)
+    ('/', controllers.wq_user.login_handler)
 ], debug=True)
