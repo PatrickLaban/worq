@@ -1,3 +1,4 @@
+from google.appengine.ext import ndb
 import webapp2
 from google.appengine.api import users
 from models.WqUser import WqUser
@@ -8,6 +9,8 @@ base_paths = os.path.split(os.path.dirname(__file__))
 jinja_environment = jinja2.Environment(loader=jinja2.FileSystemLoader(base_paths[0]))
 
 class HomePageHandler(webapp2.RequestHandler):
+
+    @ndb.toplevel
     def get(self):
         user = users.get_current_user()
         if user:
