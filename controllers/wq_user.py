@@ -1,5 +1,6 @@
 import webapp2
 from google.appengine.api import users
+from models.WqUser import WqUser
 import jinja2
 import os
 
@@ -13,6 +14,7 @@ class HomePageHandler(webapp2.RequestHandler):
             url = users.create_logout_url(self.request.uri)
             url_linktext = 'Logout'
             user_name = user.email()
+            WqUser.get_or_insert(user_name.lower(), parent=None, user=user, name=user_name)
         else:
             url = users.create_login_url(self.request.uri)
             url_linktext = 'Login'
