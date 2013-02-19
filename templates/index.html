@@ -8,6 +8,13 @@
     {{ user_name }} <a href="{{ url }}">{{ url_linktext }}</a>
     {% else %}
     <a href="{{ url }}">{{ url_linktext }}</a>
-    {% endif %}    
+    {% endif %}
+    <div id="test-div"></div>
+    <script src="https://www.google.com/jsapi" type="text/javascript"></script>
+    <script type="text/javascript">
+        google.load("jquery", "1");
+        google.load("jqueryui", "1");
+    </script>
+    <script src="/static/bootstrap/js/bootstrap.js"></script>
 </body>
 </html>
