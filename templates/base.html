@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    {% block head %}{% endblock %}
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span12">
+                {%  if (url_linktext == "Logout") %}
+                    {{ user_name }} <a href="{{ url }}">{{ url_linktext }}</a>
+                {% else %}
+                    <a href="{{ url }}">{{ url_linktext }}</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% block content %}
+    {% endblock %}
+    <script src="https://www.google.com/jsapi" type="text/javascript"></script>
+    <script type="text/javascript">
+        google.load("jquery", "1");
+        google.load("jqueryui", "1");
+    </script>
+    <script src="/static/bootstrap/js/bootstrap.js"></script>
+</body>
+</html>

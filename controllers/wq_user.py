@@ -20,7 +20,7 @@ class HomePageHandler(webapp2.RequestHandler):
             WqUser.get_or_insert(user_name.lower(), parent=None, user=user, name=user_name)
         else:
             url = users.create_login_url(self.request.uri)
-            url_linktext = 'Login'
+            url_linktext = 'Login With Your Existing Gmail Account'
             user_name = ""
 
         template_values = {
