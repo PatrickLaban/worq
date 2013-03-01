@@ -2,19 +2,45 @@
 <html>
 <head>
     <title>{% block title %}{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <style>
+        body {padding-top: 60px;}
+    </style>
     {% block head %}{% endblock %}
 </head>
 <body>
-    <div class="container-fluid">
-        <div class="row-fluid">
-            <div class="span12">
-                {%  if (url_linktext == "Logout") %}
-                    {{ user_name }} <a href="{{ url }}">{{ url_linktext }}</a>
-                {% else %}
-                    <a href="{{ url }}">{{ url_linktext }}</a>
-                {% endif %}
+    <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container-fluid">
+                <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="brand" href="#">Worq</a>
+                <div class="nav-collapse collapse">
+                    <ul class="nav">
+                        <li class="active"><a href="/home">Home</a></li>
+                    </ul>
+                    <ul class="nav pull-right">
+                        {% if (url_linktext == "Log Out") %}
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="icon-user"></i>{{ user_name }}
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{ url }}">{{ url_linktext }}</a></li>
+                            </ul>
+                        </li>
+                        {% else %}
+                        <li><a href="{{ url }}">{{ url_linktext }}</a></li>
+                        {% endif %}
+                    </ul>
+                </div><!--/.nav-collapse -->
             </div>
+
         </div>
     </div>
     {% block content %}
@@ -27,3 +53,8 @@
     <script src="/static/bootstrap/js/bootstrap.js"></script>
 </body>
 </html>
+
+{#                <p class="navbar-link pull-right"><a href="{{ url }}">{{ url_linktext }}</a></p>#}
+{#                {% else %}#}
+{#                <p class="navbar-link pull-right"></p>#}
+{#                {% endif %}#}

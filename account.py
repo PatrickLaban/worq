@@ -3,5 +3,5 @@ import controllers.wq_user
 
 app = webapp2.WSGIApplication([
     ('/', controllers.wq_user.HomePageHandler),
-    ('/home', controllers.wq_user.HomePageHandler),
+    ('/account', controllers.wq_user.AccountHandler),
 ], debug=True)
